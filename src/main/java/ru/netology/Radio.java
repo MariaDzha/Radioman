@@ -12,7 +12,7 @@ public class Radio {
             return;
         }
         currentVolume = currentVolume + 1;
-     }
+    }
 
     public void decreaseVolume() {
         if (currentVolume > 0) {
