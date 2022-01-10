@@ -32,7 +32,7 @@ public class Radio {
     public void nextStation() {
         if (currentStation < 9) {
             currentStation = currentStation + 1;
-        } else if (currentStation == 9) {
+        } else {
             currentStation = 0;
         }
     }
