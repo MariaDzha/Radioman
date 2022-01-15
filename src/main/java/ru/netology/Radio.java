@@ -40,8 +40,7 @@ public class Radio {
     public void prevStation() {
         if (currentStation > 0) {
             currentStation = currentStation - 1;
-        }
-        if (currentStation == 0) {
+        } else {
             currentStation = 9;
         }
     }

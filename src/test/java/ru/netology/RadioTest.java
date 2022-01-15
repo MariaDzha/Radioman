@@ -82,14 +82,18 @@ public class RadioTest {
     @Test
     void prevStation() {
         Radio radio = new Radio();
-        int expected = 9;
         radio.prevStation();
         int actual = radio.getCurrentStation();
-        assertEquals(expected, actual);
+        assertEquals(9, actual);
 
         radio.prevStation();
         actual = radio.getCurrentStation();
         assertEquals(8, actual);
+
+        radio.setCurrentStation(1);
+        radio.prevStation();
+        actual = radio.getCurrentStation();
+        assertEquals(0, actual);
     }
 
     @Test
