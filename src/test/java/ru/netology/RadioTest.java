@@ -12,43 +12,29 @@ public class RadioTest {
     @Test
     void increaseVolume() {
         Radio radio = new Radio();
-        int expected = 1;
         radio.increaseVolume();
         int actual = radio.getCurrentVolume();
-        assertEquals(expected, actual);
+        assertEquals(1, actual);
 
         radio.increaseVolume();
         actual = radio.getCurrentVolume();
         assertEquals(2, actual);
 
-        radio.increaseVolume();
-
-        radio.increaseVolume();
-
-        radio.increaseVolume();
-
-        radio.increaseVolume();
-
-        radio.increaseVolume();
-
-        radio.increaseVolume();
-
-        radio.increaseVolume();
+        for (int i = 0; i < 98; i++) {
+            radio.increaseVolume();
+        }
+        actual = radio.getCurrentVolume();
+        assertEquals(100, actual);
 
         radio.increaseVolume();
         actual = radio.getCurrentVolume();
-        assertEquals(10, actual);
-
-        radio.increaseVolume();
-        actual = radio.getCurrentVolume();
-        assertEquals(10, actual);
+        assertEquals(100, actual);
     }
 
 
     @Test
     void decreaseVolume() {
         Radio radio = new Radio();
-        int expected = 0;
         radio.decreaseVolume();
         int actual = radio.getCurrentVolume();
         assertEquals(0, actual);
@@ -80,6 +66,21 @@ public class RadioTest {
     }
 
     @Test
+    void nextStationWithParam() {
+        int stationCount = 20;
+        Radio radio = new Radio(stationCount);
+        radio.nextStation();
+        int actual = radio.getCurrentStation();
+        assertEquals(1, actual);
+
+        radio.setCurrentStation(stationCount - 1);
+        radio.nextStation();
+        actual = radio.getCurrentStation();
+        assertEquals(0, actual);
+
+    }
+
+    @Test
     void prevStation() {
         Radio radio = new Radio();
         radio.prevStation();
@@ -89,12 +90,17 @@ public class RadioTest {
         radio.prevStation();
         actual = radio.getCurrentStation();
         assertEquals(8, actual);
-
-        radio.setCurrentStation(1);
-        radio.prevStation();
-        actual = radio.getCurrentStation();
-        assertEquals(0, actual);
     }
+
+    @Test
+    void prevStationWithParam() {
+        int stationCount = 20;
+        Radio radio = new Radio(stationCount);
+        radio.prevStation();
+        int actual = radio.getCurrentStation();
+        assertEquals(stationCount - 1, actual);
+    }
+
 
     @Test
     void setStation() {
